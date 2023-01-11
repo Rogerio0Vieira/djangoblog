@@ -4,6 +4,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView
 from .forms import EmailPostForm
 
+
 def post_share(request, post_id):
     post = get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
     if request.method == 'POST':
@@ -41,6 +42,7 @@ def post_list(request):
 
 
 def post_detail(request, year, month, day, post):
+    #import ipdb ; ipdb.set_trace()
     post = get_object_or_404(Post,
                              status=Post.Status.PUBLISHED,
                              slug=post,
@@ -50,3 +52,7 @@ def post_detail(request, year, month, day, post):
     return render(request,
                   'blog/post/detail.html',
                   {'post': post})
+    
+    
+def show_home_page(request):
+    return render(request, 'blog/home.html')
