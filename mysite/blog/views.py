@@ -3,7 +3,8 @@ from .models import Post
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView
 from .forms import EmailPostForm
-from django.core.mail import send_email
+from django.core.mail import send_mail
+from decouple import config 
 
 
 def post_share(request, post_id):
@@ -17,7 +18,7 @@ def post_share(request, post_id):
             post_url = request.build_absolute_uri(post.get_absolute_url())
             subject = f"{cd['name']} recommends you read" f"{post.title}"
             message = f"Read {post.title} at {post_url}\n\n" f"{cd['name']}\'s comments: {cd['comments']}"
-            send_mail(subject, message, 'your_account@gmail.com', [cd['to']]) 
+            send_mail(subject, message, config('EMAIL_HOST_USER'), [cd['to']]) 
             sent = True
 
     else:
