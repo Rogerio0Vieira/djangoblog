@@ -3,6 +3,7 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
+
   <h1>{{ post.title }}</h1>
   <p class="date">
     Published {{ post.publish }} by {{ post.author }}
@@ -18,4 +19,5 @@
       {{total_comments}} comment {{total_comments|pluralize}}
     </h2>
   {% endwith %}
+
 {% endblock %}
