@@ -8,6 +8,7 @@ from decouple import config
 from django.views.decorators.http import require_POST
 
 
+
 @require_POST
 def post_comment(request, post_id):
     post = get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
