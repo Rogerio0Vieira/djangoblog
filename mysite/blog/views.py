@@ -39,6 +39,7 @@ def post_share(request, post_id):
     return render(request, 'blog/post/share.html', {'post': post, 'form': form, 'sent': sent})
 
 class PostListView(ListView):
+    
     queryset = Post.published.all()
     context_object_name = 'posts'
     paginate_by = 3
@@ -46,6 +47,7 @@ class PostListView(ListView):
 
 
 def post_list(request):
+    
     post_list = Post.published.all()
     paginator = Paginator(post_list, 3)
     page_number = request.GET.get('page', 1)
