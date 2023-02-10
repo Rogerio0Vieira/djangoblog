@@ -66,6 +66,7 @@ def post_list(request):
 
 
 def post_detail(request, year, month, day, post):
+    
     #import ipdb ; ipdb.set_trace()
     post = get_object_or_404(Post,
                              status=Post.Status.PUBLISHED,
