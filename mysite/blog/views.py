@@ -86,3 +86,4 @@ def post_detail(request, year, month, day, post):
     
 def show_home_page(request):
     return render(request, 'blog/home.html')
+
